@@ -1,0 +1,40 @@
+.mod_slideshow {
+
+	&.horizonal { }
+	&.vertical { }
+	&.loading {
+		.slide { display: none; }
+		.slide:first-child { display: block; }
+	}
+
+	.slides { }
+	.slide {
+		position: relative;
+
+		.discription { }
+		.image {
+
+			img { vertical-align: bottom; }
+		}
+	}
+
+
+	&.transitionSlide {
+		.slide {
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+		}
+	}
+
+	&.transitionFade {
+		.slide {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			opacity: 0;
+		}
+	}
+}

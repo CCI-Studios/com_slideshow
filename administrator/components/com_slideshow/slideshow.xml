@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>slideshow</name>
+	<author>Jonathan Bennett</author>
+	<creationDate>March 2012</creationDate>
+	<copyright>Copyright (C) 2012 - 2012 CCI Studios. All rights reserved</copyright>
+	<license>GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<authorEmail>jbennett@ccistudios.com</authorEmail>
+	<authorUrl>www.ccistudios.com</authorUrl>
+	<version>1.0.0</version>
+    <description>COM_SLIDESHOW_DESCRIPTION</description>
+	
+    <administration>
+        <menu view="slideshows" img="media/com_slideshow/images/icons/logo.png" link="option=com_slideshow">Slideshows</menu>
+
+		<files>
+			<folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			<file>slideshow.php</file>
+		</files>
+    </administration>
+</install>

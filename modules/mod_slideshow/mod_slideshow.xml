@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.7" client="site" method="upgrade">
+	<name>mod_slideshow</name>
+	<author>Jonathan Bennett</author>
+	<creationDate>March 2012</creationDate>
+	<copyright>Copyright (C) 2012 - 2011 CCI Studios. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>jbennett@ccistudios.com</authorEmail>
+	<authorUrl>www.ccistudios.com</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_SLIDESHOW_DESCRIPTION</description>
+	<files>
+		<filename module="mod_slideshow">mod_slideshow.php</filename>
+		<folder>tmpl</folder>
+		<filename>mod_slideshow.xml</filename>
+	</files>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="slideshow" type="list" label="Slideshow">
+					<option value="1">Gallery 1</option>
+					<option value="2">Gallery 2</option>
+				</field>
+
+				<field name="transition" type="list" default="slide"
+					label="Transition"
+					description="Transition Style to use">
+					<option value="slide">Slide</option>
+					<option value="fade">Fade</option>
+				</field>
+				<field name="duration" type="text" default="500"
+					filter="integer"
+					label="Transition Duration"
+					description="How long does a transition take to complete" />
+				<field name="delay" type="text" default="5000"
+					filter="integer"
+					label="Transition Delay"
+					description="How long to delay betweeen slide transitions" />
+
+				<field name="indicator" type="list" default="dots"
+					label="Thumbnail Style"
+					description="Style of slide thumbnails to use.\n Thumbnail: use image and description from slide\n Dots: Use a list of dots">
+					<option value="0">None</option>
+					<option value="thumbs">Thumbnails</option>
+					<option value="dots">Dots</option>
+				</field>
+				<field name="style" type="list" default="horizontal"
+					label="Slideshow Style">
+					<option value="horizontal">Horizontal</option>
+					<option value="vertical">Vertical</option>
+				</field>
+				<field name="css" type="radio" default="1"
+					label="Load CSS">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="js" type="radio" default="1"
+					label="Load javascript">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+
+				<field name="showControls" type="radio" default="0"
+					label="Show Controls">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="autoplay" type="radio" default="1"
+					label="Autoplay">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

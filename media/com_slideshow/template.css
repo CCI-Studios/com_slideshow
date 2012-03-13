@@ -1,0 +1,6 @@
+.mod_slideshow .slide .image { text-align: center; }
+.mod_slideshow .slide .description {
+	position: absolute;
+	right: 20%;
+	top: 40%;
+}
