@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <install type="component" version="1.5.0" method="upgrade">
-	<name>slideshow</name>
+	<name>com_slideshow</name>
 	<author>Jonathan Bennett</author>
 	<creationDate>March 2012</creationDate>
 	<copyright>Copyright (C) 2012 - 2012 CCI Studios. All rights reserved</copyright>

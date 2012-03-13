@@ -1,4 +1,4 @@
-CREATE TABLE `#__slideshow_galleries` (
+CREATE TABLE IF NOT EXISTS `#__slideshow_galleries` (
   `slideshow_gallery_id` SERIAL,
   
   `title` varchar(250) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE `#__slideshow_galleries` (
   PRIMARY KEY (`slideshow_gallery_id`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE  `#__slideshow_slides` (
+CREATE TABLE IF NOT EXISTS `#__slideshow_slides` (
 	`slideshow_slide_id` SERIAL,
 	
 	`description1` TEXT NOT NULL COMMENT '@Filter("html")',
