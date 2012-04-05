@@ -8,13 +8,11 @@ class ModSlideshowHtml extends ModDefaultHtml
 		$doc = JFactory::getDocument();
 		$params = $this->module->params;
 		// FIXME: load slideshow 4relz
-		$slides = array(
-			(object)array('description1'=>'<h3>Welcome to Field Farms Marketing Ltd.</h3><p class="link"><a href="/about-us">About Us</a></p>', 'image1'=>'slide1.jpeg', 'description2'=>'adfs', 'image2'=>'asdf;lk'),
-			(object)array('description1'=>'<h3>Welcome to Field Farms Marketing Ltd.</h3><p class="link"><a href="/about-us">About Us</a></p>', 'image1'=>'slide2.jpeg', 'description2'=>'adfs', 'image2'=>'asdf;lk'),
-			(object)array('description1'=>'<h3>Welcome to Field Farms Marketing Ltd.</h3><p class="link"><a href="/about-us">About Us</a></p>', 'image1'=>'slide3.jpeg', 'description2'=>'adfs', 'image2'=>'asdf;lk'),
-		);
+		$model = $this->getService('com://admin/slideshow.model.slides');
+		$slides = $model->set('slideshow_gallery_id', $params->get('slideshow_gallery_id'))->getList();
+
 		$this->assign('slides', $slides);
-		$this->assign('imagePath', 'media/com_slideshow/uploads/gallery1/');
+		$this->assign('imagePath', 'media/com_slideshow/uploads/');
 		
 		$this->assign('style', $params->get('style'));
 		$this->assign('indicatorStyle', $params->get('indicator'));

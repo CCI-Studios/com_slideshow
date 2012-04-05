@@ -17,11 +17,9 @@
 	
 	<config>
 		<fields name="params">
-			<fieldset name="basic">
-				<field name="slideshow" type="list" label="Slideshow">
-					<option value="1">Gallery 1</option>
-					<option value="2">Gallery 2</option>
-				</field>
+			<fieldset name="basic"
+				addfieldpath="/administrator/components/com_slideshow/models/fields">
+				<field name="slideshow_id" type="galleries" label="Slideshow" />
 
 				<field name="transition" type="list" default="slide"
 					label="Transition"

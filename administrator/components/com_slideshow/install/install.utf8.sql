@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS `#__slideshow_galleries` (
   
   `title` varchar(250) NOT NULL,
   `ordering` int(11) UNSIGNED NOT NULL,
-  `path` varchar(250) NOT NULL,
 
   PRIMARY KEY (`slideshow_gallery_id`)
 ) ENGINE=InnoDB;

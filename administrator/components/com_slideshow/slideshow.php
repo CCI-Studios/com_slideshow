@@ -1,4 +1,4 @@
 <?php
 defined('KOOWA') or die;
 
-echo "adsf";
+echo KService::get('com://admin/slideshow.dispatcher')->dispatch();
