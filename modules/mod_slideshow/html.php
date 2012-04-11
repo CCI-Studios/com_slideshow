@@ -14,25 +14,25 @@ class ModSlideshowHtml extends ModDefaultHtml
 		$this->assign('slides', $slides);
 		$this->assign('imagePath', 'media/com_slideshow/uploads/');
 		
-		$this->assign('style', $params->get('style'));
-		$this->assign('indicatorStyle', $params->get('indicator'));
+		$this->assign('style', $params->get('style', 'horizontal'));
+		$this->assign('indicatorStyle', $params->get('indicator', 'dots'));
 		$this->assign('moduleID', $this->module->id);
 
 		$this->assign('options', (object)array(
-			'transition'	=> $params->get('transition'),
-			'duration'		=> $params->get('duration'),
-			'delay'			=> $params->get('delay')
+			'transition'	=> $params->get('transition', 'slide'),
+			'duration'		=> $params->get('duration', 500),
+			'delay'			=> $params->get('delay', 5000)
 		));
 
-		$this->assign('showControls', $params->get('showControls'));
-		$this->assign('autoplay', $params->get('autoplay'));
+		$this->assign('showControls', $params->get('showControls', 0));
+		$this->assign('autoplay', $params->get('autoplay', 1));
 
-		if ($params->get('css')) {
+		if ($params->get('css', 1)) {
 			$doc->addStylesheet('media/com_slideshow/com_slideshow.css');
 			$doc->addStylesheet('media/com_slideshow/template.css');
 		}
 
-		if ($params->get('js')) {
+		if ($params->get('js', 1)) {
 			$doc->addScript('media/com_slideshow/com_slideshow.js');
 		}
 
