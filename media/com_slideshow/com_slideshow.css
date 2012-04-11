@@ -1,19 +1,21 @@
-.mod_slideshow.loading .slide {
-  display: none; }
-.mod_slideshow.loading .slide:first-child {
-  display: block; }
-.mod_slideshow .slide {
+.mod_slideshow {
   position: relative; }
-  .mod_slideshow .slide .image img {
-    vertical-align: bottom; }
-.mod_slideshow.transitionSlide .slide {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%; }
-.mod_slideshow.transitionFade .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0; }
+  .mod_slideshow.loading .slide {
+    display: none; }
+  .mod_slideshow.loading .slide:first-child {
+    display: block; }
+  .mod_slideshow .slide {
+    position: relative; }
+    .mod_slideshow .slide .image img {
+      vertical-align: bottom; }
+  .mod_slideshow.transitionSlide .slide {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%; }
+  .mod_slideshow.transitionFade .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0; }
