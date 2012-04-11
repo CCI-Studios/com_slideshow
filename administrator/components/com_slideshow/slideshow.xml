@@ -9,6 +9,14 @@
 	<authorUrl>www.ccistudios.com</authorUrl>
 	<version>1.0.0</version>
     <description>COM_SLIDESHOW_DESCRIPTION</description>
+
+    <install><sql>
+		<file charset="utf8" driver="mysql">install/install.utf8.sql</file>
+	</sql></install>
+	
+	<uninstall><sql>
+		<file charset="utf8" driver="mysql">install/uninstall.utf8.sql</file>
+	</sql></uninstall>
 	
     <administration>
         <menu view="slideshows" img="media/com_slideshow/images/icons/logo.png" link="option=com_slideshow">Slideshows</menu>
