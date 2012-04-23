@@ -1,0 +1,24 @@
+.mod_slideshow {
+	position: relative;
+
+	&.horizonal { }
+	&.vertical { }
+	&.loading {
+		.slide { display: none; }
+		.slide:first-child { display: block; }
+	}
+
+	.slides { }
+	.slide {
+		position: relative;
+		width: 940px;
+
+		.discription { }
+		.image {
+
+			img { 
+				vertical-align: bottom;
+			}
+		}
+	}
+}

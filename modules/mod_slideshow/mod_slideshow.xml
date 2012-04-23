@@ -21,12 +21,6 @@
 				addfieldpath="/administrator/components/com_slideshow/models/fields">
 				<field name="slideshow_id" type="galleries" label="Slideshow" />
 
-				<field name="transition" type="list" default="slide"
-					label="Transition"
-					description="Transition Style to use">
-					<option value="slide">Slide</option>
-					<option value="fade">Fade</option>
-				</field>
 				<field name="duration" type="text" default="500"
 					filter="integer"
 					label="Transition Duration"
@@ -45,8 +39,9 @@
 				</field>
 				<field name="style" type="list" default="horizontal"
 					label="Slideshow Style">
-					<option value="horizontal">Horizontal</option>
-					<option value="vertical">Vertical</option>
+					<option value="carousel">Carousel</option>
+					<option value="slider">Slider</option>
+					<option value="fader">Fader</option>
 				</field>
 				<field name="css" type="radio" default="1"
 					label="Load CSS">

@@ -1,0 +1,63 @@
+.mod_slideshow {
+  position: relative; }
+  .mod_slideshow.loading .slide {
+    display: none; }
+  .mod_slideshow.loading .slide:first-child {
+    display: block; }
+  .mod_slideshow .slide {
+    position: relative;
+    width: 940px; }
+    .mod_slideshow .slide .image img {
+      vertical-align: bottom; }
+
+.mod_slideshow.continuous .slides {
+  width: 940px;
+  margin: 0 auto; }
+  .mod_slideshow.continuous .slides > div {
+    position: relative;
+    left: -1880px;
+    width: 30000px; }
+.mod_slideshow.continuous .slide {
+  float: left; }
+.mod_slideshow.continuous .overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 5;
+  background: url(images/slideshow-top.png) top no-repeat; }
+.mod_slideshow.continuous .overlay2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 13px;
+  z-index: 6;
+  background: url(images/slideshow-bottom.png) top no-repeat; }
+.mod_slideshow.continuous .overlay3 {
+  width: 940px;
+  position: absolute;
+  left: 50%;
+  margin-left: -470px;
+  z-index: 5; }
+  .mod_slideshow.continuous .overlay3 > div {
+    position: absolute;
+    right: 100%;
+    top: 16px;
+    height: 360px;
+    width: 44px;
+    background: url(images/shadow-left.png) no-repeat; }
+.mod_slideshow.continuous .overlay4 {
+  width: 940px;
+  position: absolute;
+  left: 50%;
+  margin-left: -470px;
+  z-index: 5; }
+  .mod_slideshow.continuous .overlay4 > div {
+    position: absolute;
+    left: 100%;
+    top: 16px;
+    height: 360px;
+    width: 44px;
+    background: url(images/shadow-right.png) no-repeat; }

@@ -1,8 +1,13 @@
-<div id="slideshow-<?= $moduleID ?>" class="mod_slideshow loading <?= $style ?> transition<?= ucfirst($options->transition) ?>"><div>
+<div id="slideshow-<?= $moduleID ?>" class="mod_slideshow loading <?= $style ?>"><div><div>
+	<div class="overlay1"><div></div></div>
+	<div class="overlay2"><div></div></div>
+	<div class="overlay3"><div></div></div>
+	<div class="overlay4"><div></div></div>
+	
 	<div class="slides"><div>
 		<? foreach($slides as $index => $slide): ?>
 		<div class="slide"><div>
-			<? if ($slide->description1) { echo "<div class=\"description\">{$slide->description1}</div>"; } ?>
+			<? if ($slide->description1) { echo "<div class=\"description\"><div>{$slide->description1}</div></div>"; } ?>
 			<? if ($slide->image1) { echo "<div class=\"image\"><img src=\"{$imagePath}{$slide->image1}\" alt=\"\" /></div>"; } ?>
 		</div></div>
 		<? endforeach; ?>
@@ -23,22 +28,18 @@
 	</div></div>
 	<? endif; ?>
 
-	<? if ($showControls): ?>
-	<div class="controls"><div>
-		<div class="playToggle"></div>
-		<!--
-			<div class="play"></div>
-			<div class="pause"></div>
-			<div class="next"></div>
-			<div class="prev"></div>
-		-->
-	</div></div>
-	<? endif; ?>
-</div></div>
+	<? if ($showControls) {
+		echo @template('controls');
+	} ?>
+</div></div></div>
 
 <script>
 window.addEvent('domready', function() {
-	var slideshow = new Slideshow($('slideshow-<?= $moduleID ?>'), <?= json_encode($options) ?>);
-	<? if ($autoplay) { echo "slideshow.start();\n"; } ?>
+	var slideshow = new Slideshow.<?= ucfirst($style) ?>($('slideshow-<?= $moduleID ?>'), <?= json_encode($options) ?>);
+	<? if ($autoplay): ?>
+	slideshow.addEvent('ready', function () {
+		slideshow.start();
+	});
+	<? endif; ?>
 });
 </script>
