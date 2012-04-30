@@ -28,7 +28,7 @@ class ModSlideshowHtml extends ModDefaultHtml
 
 		$style = $params->get('style', 'horizontal');
 		if ($params->get('css', 1)) {
-			$doc->addStylesheet("media/com_slideshow/com_slideshow-$style.css");
+			$doc->addStylesheet("media/com_slideshow/css/com_slideshow-$style.css");
 		}
 
 		if ($params->get('js', 1)) {

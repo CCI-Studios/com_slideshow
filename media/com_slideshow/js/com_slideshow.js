@@ -1,127 +1,157 @@
-/* jshint mootools:true */
 
-window.Slideshow = new Class({
+;(function() {
+
+var Slideshow = this.Slideshow = new Class({
   Implements: [Options, Events],
-  
+
   options: {
+    // transitions
     duration: 500,
     delay: 5000,
-    slides: [],
     direction: 1,
-    slideContainerSelector: '.slides > div',
+    autoplay: false,
+
+    // selectors
+    slidesContainerSelector: '.slides > div',
     slideSelector: '.slide',
-    thumbSelector: null,
+    thumbsContainerSelector: '.thumbs > div',
+    thumbSelector: '.thumb',
+
+    // callbacks
+    onShow: function() {},
+    onShowComplete: function() {},
+    onReverse: function() {},
+    onPlay: function() {},
+    onPause: function() {},
+
     debug: false
   },
-  
-  container: null,
-  slidesContainer: null,
+
+  element: null,
+  current: null,
+  index: 0,
+
   slides: null,
+  slidesContainer: null,
+  thumbs: null,
+  thumbsContainer: null,
   timer: null,
   running: false,
-  current: 0,
-  maxHeight: 0,
-  maxWidth: 0,
-  
-  initialize: function(container, options) {
+
+  initialize: function(element, options) {
     this.setOptions(options);
-    this.container = container;
-    this.slidesContainer = container.getElement(this.options.slideContainerSelector);
-    this.slides = [];
-    
+    this.element = document.id(element);
+
     window.addEvent('load', (function() {
-      this.setup();
-      return this.fireEvent('ready');
+      this._setup();
+      this.fireEvent('ready');
     }).bind(this));
   },
 
-  setup: function() {
-    var i, slide;
-    this.addSlides(this.options.slides);
-    this.addSlides(this.container.getElements(this.options.slideSelector));
+  _setup: function() {
+    this.slidesContainer = this.element.getElement(this.options.slidesContainerSelector);
+    this.slides = this.slidesContainer.getElements(this.options.slideSelector);
+    this.thumbsContainer = this.element.getElement(this.options.thumbsContainerSelector);
+    this.thumbs = this.thumbsContainer.getElements(this.options.thumbSelector);
 
-    for (i = 0; i < 2; i++) {
-      slide = this.slidesContainer.getLast(this.options.slideSelector);
-      slide.inject(this.slidesContainer, 'top');
-    }
-
-    this.container.removeClass('loading');
-    this.slidesContainer.get('tween').options.duration = this.options.duration;
-    this.slidesContainer.get('tween').addEvent('onComplete', (function() {
-      this.queueSlide();
-      return this.fireEvent('didShowSlide');
+    this.thumbs.each((function(thumb) {
+      thumb.addEvent('click', (function() {
+        this.goTo(this.thumbs.indexOf(thumb));
+      }).bind(this));
     }).bind(this));
-  },
 
-  addSlide: function(slide) {
-    this.addSlides(Array.from(slide));
-  },
-
-  addSlides: function(slides) {
-    var slide, _i, _len;
-    for (_i = 0, _len = slides.length; _i < _len; _i++) {
-      slide = slides[_i];
-      if (this.slides.length === 0) {
-        slide.addClass('active');
-      }
-      this.slides.include(slide);
-      if (slide.getSize().y > this.maxHeight) {
-        this.maxHeight = slide.getSize().y;
+    var maxHeight = 0,
+      i = 0,
+      _len = this.slides.length;
+    for (; i < _len; i++) {
+      if (this.slides[i].getSize().y > maxHeight) {
+        maxHeight = this.slides[i].getSize().y;
       }
     }
-    this.slidesContainer.setStyle('height', this.maxHeight);
+
+    for (i = 0; i < _len; i++) {
+      this.slides[i].setStyle('height', maxHeight);
+    }
+
+    this.slidesContainer.setStyle('height', maxHeight);
+    this.direction = this.options.direction;
+
+    this.index = 0;
+    this.current = this.slides[this.index];
+
+    this.element.removeClass('loading');
   },
 
   start: function() {
-    this.queueSlide();
     this.running = true;
+    this._queueSlide();
   },
 
-  stop: function() {
+  stop: function () {
     this.running = false;
     clearTimeout(this.timer);
   },
 
   next: function() {
-    this.options.direction = 1;
-    this.showSlide();
+    this.direction = 1;
+    this.stop();
+    this._showSlide(this._newIndex(1));
   },
+
   prev: function() {
-    this.options.direction = 0;
-    this.showSlide();
+    this.direction = -1;
+    this.stop();
+    this._showSlide(this._newIndex(-1));
   },
+
   goTo: function(index) {
-
+    this.stop();
+    this._showSlide(index);
   },
 
-  queueSlide: function() {
-    this.timer = this.showSlide.delay(this.options.delay, this);
+  _queueSlide: function(index) {
+    this.running = true;
+    this.timer = this._showSlide.bind(this, this._newIndex(1)).delay(this.options.delay);
   },
 
-  showSlide: function() {
-    var fromSlide, oldIndex, toSlide;
-    if (this.running) {
-      clearTimeout(this.timer);
-    }
-
-    oldIndex = this.current;
-    fromSlide = this.slides[this.current];
-    this.current = this.updateCurrent(1);
-    toSlide = this.slides[this.current];
-    
-    this.fireEvent('willShowSlide');
-    this.transition(fromSlide, toSlide, oldIndex, this.current);
-  },
-
-  updateCurrent: function(distance) {
-    var current = this.current + (this.options.direction * 2 - 1) * distance;
+  _newIndex: function(distance) {
+    var current = this.index + this.direction * distance;
     current += this.slides.length;
     current %= this.slides.length;
 
     return current;
   },
 
-  transition: function(from, to, index_from, index_to) {
-    // replace with proper implementation
+  _showSlide: function (nextIndex) {
+    var slideData = {
+      previous: {
+        element: this.current,
+        thumb: this.thumbs[this.index],
+        index: this.index
+      },
+      next: {
+        element: this.slides[nextIndex],
+        thumb: this.thumbs[nextIndex],
+        index: nextIndex
+      }
+    };
+
+    this._transition(slideData);
+
+    this.current = slideData.next.element;
+    this.index = slideData.next.index;
+
+    (function() {
+      if (this.running) {
+        this._queueSlide();
+      }
+    }).bind(this).delay(this.options.duration);
+  },
+
+  _transition: function(slideData) {
+    console.log(slideData);
   }
+
 });
+
+})();

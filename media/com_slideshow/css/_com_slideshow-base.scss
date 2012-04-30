@@ -1,5 +1,6 @@
 .mod_slideshow {
 	position: relative;
+	margin: 1em 0;
 
 	&.horizonal { }
 	&.vertical { }
@@ -20,5 +21,10 @@
 				vertical-align: bottom;
 			}
 		}
+	}
+
+	.thumbs { }
+	.thumb {
+		cursor: pointer;
 	}
 }

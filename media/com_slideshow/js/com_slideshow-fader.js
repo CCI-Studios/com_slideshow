@@ -1,10 +1,18 @@
 /* jshint mootools:true */
 
-window.Slideshow.Carousel = new Class({
-  Extends: window.Slideshow,
+window.Slideshow.Fader = new Class({
+	Extends: window.Slideshow,
 
-  transition: function(from, to, index_from, index_to) {
-    from.tween('opacity', 0);
-    to.tween('opacity', 1);
-  }
+	_transition: function(slideData) {
+		slideData.previous.element
+			.removeClass('active')
+			.tween('opacity', 0);
+		slideData.previous.thumb
+			.removeClass('active');
+		slideData.next.element
+			.addClass('active')
+			.tween('opacity', 1);
+		slideData.next.thumb
+			.addClass('active');
+	}
 });

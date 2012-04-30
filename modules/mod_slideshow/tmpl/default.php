@@ -5,8 +5,9 @@
 	<div class="overlay4"><div></div></div>
 	
 	<div class="slides"><div>
-		<? foreach($slides as $index => $slide): ?>
-		<div class="slide"><div>
+		<? $first = true;
+		foreach($slides as $index => $slide): ?>
+		<div class="slide <?php if ($first) { echo 'active'; $first = false; } ?>"><div>
 			<? if ($slide->description1) { echo "<div class=\"description\"><div>{$slide->description1}</div></div>"; } ?>
 			<? if ($slide->image1) { echo "<div class=\"image\"><img src=\"{$imagePath}{$slide->image1}\" alt=\"\" /></div>"; } ?>
 		</div></div>
@@ -15,15 +16,16 @@
 
 	<? if ($indicatorStyle): ?>
 	<div class="thumbs <?= $indicatorStyle ?>"><div>
-		<? foreach($slides as $index => $slide): ?>
-		<div class="thumb"><div>
+		<? $first = true;
+		foreach($slides as $index => $slide): ?>
+		<div class="thumb <?php if ($first) { echo 'active'; $first = false; } ?>"><div><div>
 			<? if ($indicatorStyle): ?>
 				<? if ($slide->description2) { echo "<div class=\"description\">{$slide->description2}</div>"; } ?>
 				<? if ($slide->image2) { echo "<div class=\"image\">{$slide->image2}</div>"; } ?>
 			<? elseif($indicatorStyle === 'dots'): ?>
 				<div class="dot"></div>
 			<? endif; ?>
-		</div></div>
+		</div></div></div>
 		<? endforeach; ?>
 	</div></div>
 	<? endif; ?>
@@ -35,7 +37,7 @@
 
 <script>
 window.addEvent('domready', function() {
-	var slideshow = new Slideshow.<?= ucfirst($style) ?>($('slideshow-<?= $moduleID ?>'), <?= json_encode($options) ?>);
+	var slideshow = new Slideshow.<?= ucfirst($style) ?>('slideshow-<?= $moduleID ?>', <?= json_encode($options) ?>);
 	<? if ($autoplay): ?>
 	slideshow.addEvent('ready', function () {
 		slideshow.start();
