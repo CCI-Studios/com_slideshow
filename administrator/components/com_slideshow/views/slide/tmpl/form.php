@@ -20,6 +20,10 @@
 					<label for="field_title"><?= @text('Title') ?></label>
 					<input type="text" id="field_title" name="title" value="<?= $slide->title ?>" />
 				</li>
+				<li>
+					<label for="field_link"><?= @text('Link') ?></label>
+					<input type="text" id="field_link" name="link" value="<?= $slide->link ?>" />
+				</li>
 			</ul>
 		</fieldset>
 		
