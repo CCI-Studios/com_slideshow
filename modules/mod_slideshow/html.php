@@ -36,6 +36,8 @@ class ModSlideshowHtml extends ModDefaultHtml
 			$doc->addScript("media/com_slideshow/js/com_slideshow-$style.js");
 		}
 
+		$this->assign('params', $params);
+
 	 	return parent::display();	
 	}
 	

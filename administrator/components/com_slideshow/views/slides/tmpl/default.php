@@ -10,6 +10,7 @@
 				<th width="10">&nbsp;</th>
 				<th width="25"><?= @helper('grid.checkall') ?></th>
 				<th><?= @helper('grid.sort', array('column' => 'title')) ?></th>
+				<th width="150"><?= @text('Slide') ?></th>
 				<th width="75"><?= @helper('grid.sort', array('column'=>'slideshow_gallery_id', 'title'=>'Gallery ID')) ?></th>
 				<th width="50"><?= @helper('grid.sort', array('column'=>'id', 'title'=>'ID')) ?></th>
 			</tr>
@@ -31,7 +32,11 @@
 					<td><a href="<?= @route("view=slide&id={$slide->id}"); ?>">
 						<?= $slide->title ?>
 					</a></td>
-
+					<td align="center">
+						<? if ($slide->image1): ?>
+							<img src="/media/com_slideshow/uploads/<?= $slide->image1 ?>" width="150" />
+						<? endif; ?>
+					</td>
 					<td align="center"><a href="<?= @route("view=gallery&id={$slide->slideshow_gallery_id}") ?>">
 						<?= $slide->slideshow_gallery_id ?>
 					</a></td>

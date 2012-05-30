@@ -13,7 +13,7 @@
 			
 			<ul class="adminformlist">
 				<li>
-					<label for="field_title"><?= @text('Gallery') ?></label>
+					<label for="field_gallery"><?= @text('Gallery') ?></label>
 					<?= @helper('listbox.galleries', array()) ?>
 				</li>
 				<li>
