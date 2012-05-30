@@ -16,6 +16,10 @@
 					<label for="field_title"><?= @text('Gallery') ?></label>
 					<?= @helper('listbox.galleries', array()) ?>
 				</li>
+				<li>
+					<label for="field_title"><?= @text('Title') ?></label>
+					<input type="text" id="field_title" name="title" value="<?= $slide->title ?>" />
+				</li>
 			</ul>
 		</fieldset>
 		

@@ -9,7 +9,7 @@
 			<tr>
 				<th width="10">&nbsp;</th>
 				<th width="25"><?= @helper('grid.checkall') ?></th>
-				<th><?= @text('Slide') ?>
+				<th><?= @helper('grid.sort', array('column' => 'title')) ?></th>
 				<th width="75"><?= @helper('grid.sort', array('column'=>'slideshow_gallery_id', 'title'=>'Gallery ID')) ?></th>
 				<th width="50"><?= @helper('grid.sort', array('column'=>'id', 'title'=>'ID')) ?></th>
 			</tr>
@@ -29,7 +29,7 @@
 					<td>&nbsp;</td>
 					<td align="center"><?= @helper('grid.checkbox', array('row' => $slide)) ?></td>
 					<td><a href="<?= @route("view=slide&id={$slide->id}"); ?>">
-						Edit Slide
+						<?= $slide->title ?>
 					</a></td>
 
 					<td align="center"><a href="<?= @route("view=gallery&id={$slide->slideshow_gallery_id}") ?>">

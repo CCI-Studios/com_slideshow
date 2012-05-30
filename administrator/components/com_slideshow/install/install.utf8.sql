@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `#__slideshow_galleries` (
 CREATE TABLE IF NOT EXISTS `#__slideshow_slides` (
 	`slideshow_slide_id` SERIAL,
 	
+	`title` VARCHAR(250) NOT NULL,
 	`description1` TEXT NOT NULL COMMENT '@Filter("html")',
 	`image1` VARCHAR( 250 ) NOT NULL ,
 	`description2` TEXT NOT NULL COMMENT '@Filter("html")',
