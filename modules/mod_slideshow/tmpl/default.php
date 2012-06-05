@@ -14,7 +14,7 @@
 					<?= $slide->description1 ?>
 					<? if ($slide->link): ?>
 					<p><a href="<?= $slide->link ?>">
-						Read More &#9658;
+						Read More &#9656;
 					</a></p>
 					<? endif; ?>
 				</div></div>
