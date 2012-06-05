@@ -42,6 +42,7 @@
 					<option value="carousel">Carousel</option>
 					<option value="slider">Slider</option>
 					<option value="fader">Fader</option>
+					<option value="continuous">Continuous</option>
 				</field>
 				<field name="css" type="radio" default="1"
 					label="Load CSS">

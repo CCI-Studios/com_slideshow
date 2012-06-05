@@ -25,7 +25,7 @@
 		height: 30px;
 		z-index: 5;
 
-		background: url(images/slideshow-top.png) top no-repeat;
+		background: url(../images/slideshow-top.png) top no-repeat;
 	}
 	.overlay2 {
 		position: absolute;
@@ -35,7 +35,7 @@
 		height: 13px;
 		z-index: 6;
 
-		background: url(images/slideshow-bottom.png) top no-repeat;
+		background: url(../images/slideshow-bottom.png) top no-repeat;
 	}
 
 	.overlay3 {
@@ -52,7 +52,7 @@
 			height: 360px;
 			width: 44px;
 
-			background: url(images/shadow-left.png) no-repeat;
+			background: url(../images/shadow-left.png) no-repeat;
 		}
 	}
 
@@ -70,7 +70,7 @@
 			height: 360px;
 			width: 44px;
 
-			background: url(images/shadow-right.png) no-repeat;
+			background: url(../images/shadow-right.png) no-repeat;
 		}
 	}
 }

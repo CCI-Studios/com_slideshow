@@ -29,7 +29,7 @@
   width: 100%;
   height: 30px;
   z-index: 5;
-  background: url(images/slideshow-top.png) top no-repeat; }
+  background: url(../images/slideshow-top.png) top no-repeat; }
 .mod_slideshow.continuous .overlay2 {
   position: absolute;
   bottom: 0;
@@ -37,7 +37,7 @@
   width: 100%;
   height: 13px;
   z-index: 6;
-  background: url(images/slideshow-bottom.png) top no-repeat; }
+  background: url(../images/slideshow-bottom.png) top no-repeat; }
 .mod_slideshow.continuous .overlay3 {
   width: 940px;
   position: absolute;
@@ -50,7 +50,7 @@
     top: 16px;
     height: 360px;
     width: 44px;
-    background: url(images/shadow-left.png) no-repeat; }
+    background: url(../images/shadow-left.png) no-repeat; }
 .mod_slideshow.continuous .overlay4 {
   width: 940px;
   position: absolute;
@@ -63,4 +63,4 @@
     top: 16px;
     height: 360px;
     width: 44px;
-    background: url(images/shadow-right.png) no-repeat; }
+    background: url(../images/shadow-right.png) no-repeat; }

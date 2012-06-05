@@ -8,7 +8,17 @@
 		<? $first = true;
 		foreach($slides as $index => $slide): ?>
 		<div class="slide <?php if ($first) { echo 'active'; $first = false; } ?>"><div>
-			<? if ($slide->description1) { echo "<div class=\"description\"><div>{$slide->description1}</div></div>"; } ?>
+			<? if ($slide->description1): ?>
+				<div class="description"><div>
+					<h2><?= $slide->title ?></h2>
+					<?= $slide->description1 ?>
+					<? if ($slide->link): ?>
+					<p><a href="<?= $slide->link ?>">
+						Read More &#9658;
+					</a></p>
+					<? endif; ?>
+				</div></div>
+			<? endif; ?>
 			<? if ($slide->image1) { echo "<div class=\"image\"><img src=\"{$imagePath}{$slide->image1}\" alt=\"\" /></div>"; } ?>
 		</div></div>
 		<? endforeach; ?>
