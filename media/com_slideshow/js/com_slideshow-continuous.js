@@ -27,5 +27,6 @@ window.Slideshow.Continuous = new Class({
 
     slides.removeClass('active');
     slides[3].addClass('active');
+    this.thumbs.removeClass('active');
   }
 });

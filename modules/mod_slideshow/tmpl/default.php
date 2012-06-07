@@ -25,19 +25,24 @@
 	</div></div>
 
 	<? if ($indicatorStyle): ?>
-	<div class="thumbs <?= $indicatorStyle ?>"><div>
+	<div class="thumbs <?= $indicatorStyle ?>"><div><div><div>
 		<? $first = true;
-		foreach($slides as $index => $slide): ?>
-		<div class="thumb <?php if ($first) { echo 'active'; $first = false; } ?>"><div><div>
-			<? if ($indicatorStyle): ?>
+		$i = 0;
+		foreach($slides as $slide): ?>
+		<div class="thumb <?php if ($i == 0) { echo 'active'; $first = false; } ?>"><div><div>
+			<? if($indicatorStyle === 'dots'): ?>
+				<div class="dot">
+					<div class="index"><?= $i + 1 ?></div>
+				</div>
+			<? elseif ($indicatorStyle): ?>
 				<? if ($slide->description2) { echo "<div class=\"description\">{$slide->description2}</div>"; } ?>
 				<? if ($slide->image2) { echo "<div class=\"image\">{$slide->image2}</div>"; } ?>
-			<? elseif($indicatorStyle === 'dots'): ?>
-				<div class="dot"></div>
 			<? endif; ?>
 		</div></div></div>
-		<? endforeach; ?>
-	</div></div>
+		<?
+		$i++;
+		endforeach; ?>
+	</div></div></div></div>
 	<? endif; ?>
 
 	<? if ($showControls) {

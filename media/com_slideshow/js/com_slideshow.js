@@ -149,7 +149,7 @@ var Slideshow = this.Slideshow = new Class({
   },
 
   _transition: function(slideData) {
-    console.log(slideData);
+    //console.log(slideData);
   }
 
 });
