@@ -12,7 +12,7 @@ class ComSlideshowDatabaseTableSlides extends KDatabaseTableDefault
 		));
 
 		$config->append(array(
-			'behaviors'	=> array($uploadable),
+			'behaviors'	=> array($uploadable, 'orderable'),
 		));
 
 		parent::_initialize($config);

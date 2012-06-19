@@ -12,13 +12,14 @@
 				<th><?= @helper('grid.sort', array('column' => 'title')) ?></th>
 				<th width="150"><?= @text('Slide') ?></th>
 				<th width="75"><?= @helper('grid.sort', array('column'=>'slideshow_gallery_id', 'title'=>'Gallery ID')) ?></th>
+				<th width="25"><?= @helper('grid.sort', array('column'=>'ordering')) ?></th>
 				<th width="50"><?= @helper('grid.sort', array('column'=>'id', 'title'=>'ID')) ?></th>
 			</tr>
 		</thead>
 		
 		<tfoot>
 			<tr>
-				<td colspan="6">
+				<td colspan="7">
 					<?= @helper('paginator.pagination', array('total' => $total)) ?>
 				</td>
 			</tr>
@@ -40,6 +41,9 @@
 					<td align="center"><a href="<?= @route("view=gallery&id={$slide->slideshow_gallery_id}") ?>">
 						<?= $slide->slideshow_gallery_id ?>
 					</a></td>
+					<td align="center">
+						<?= @helper('grid.order', array('row'=>$slide)) ?>
+					</td>
 					<td align="center"><?= $slide->id ?></td>
 				</tr>
 			<? endforeach; ?>
