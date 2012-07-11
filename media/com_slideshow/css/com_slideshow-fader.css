@@ -22,7 +22,8 @@
   opacity: 0; }
   .mod_slideshow.fader .slide.active {
     position: static;
-    opacity: 1; }
+    opacity: 1;
+    visibility: visible; }
 .mod_slideshow.fader .thumbs {
   position: absolute;
   top: 10px;

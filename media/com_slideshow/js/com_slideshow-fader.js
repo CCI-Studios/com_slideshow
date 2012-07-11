@@ -6,12 +6,13 @@ window.Slideshow.Fader = new Class({
 	_transition: function(slideData) {
 		slideData.previous.element
 			.removeClass('active')
-			.tween('opacity', 0);
+			.fade();
 		slideData.previous.thumb
 			.removeClass('active');
 		slideData.next.element
 			.addClass('active')
-			.tween('opacity', 1);
+			.setStyle('display', 'block')
+			.fade('in');
 		slideData.next.thumb
 			.addClass('active');
 	}
